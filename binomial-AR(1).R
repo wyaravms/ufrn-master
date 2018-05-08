@@ -1,5 +1,5 @@
 
-# Valores para os par‚metros
+# Valores para os par√¢metros
 p<-0.40
 pho<-0.30
 n<-150
@@ -10,7 +10,7 @@ alpha<-beta1+pho
 
 y.aux <- numeric(0)
 
-#GeraÁ„o de uma sequencia que segue o processo Binomial AR(1)
+#Gera√ß√£o de uma sequencia que segue o processo Binomial AR(1)
 yn <- function(size,n,alpha,beta1,p){
   y.aux[1] <- rbinom(1,n,p)
   for(i in 2:size)
@@ -18,24 +18,24 @@ yn <- function(size,n,alpha,beta1,p){
   y.aux
 }
 
-#SÈrie gerada
+#S√©rie gerada
 y <- yn(size,n,alpha,beta1,p)
 
 plot.ts(y,lwd=1,ylab="",xlab="")
-points(y, pch=19, cex=0.5, lwd=1) #Destaca cada ponto da sÈrie
+points(y, pch=19, cex=0.5, lwd=1) #Destaca cada ponto da s√©rie
 
 
 mean(y)
 var(y) 
 
-#FunÁ„o de autocorrelaÁ„o e autocorrelaÁ„o parcial teorica
+#Fun√ß√£o de autocorrela√ß√£o e autocorrela√ß√£o parcial teorica
 m <- 20 #defasagem maxima
 par(mfrow=c(1,2))
-plot(pho^(1:m),type="h", main = "FunÁ„o de autocorrelaÁ„o teorica",ylab = "",xlab="Defasagem")
-plot(c(p,rep(0,m-1)),type="h", main = "FunÁ„o de autocorrelaÁ„o parcial teorica",ylab = "",xlab="Defasagem")
+plot(pho^(1:m),type="h", main = "Fun√ß√£o de autocorrela√ß√£o teorica",ylab = "",xlab="Defasagem")
+plot(c(p,rep(0,m-1)),type="h", main = "Fun√ß√£o de autocorrela√ß√£o parcial teorica",ylab = "",xlab="Defasagem")
 
 library("forecast")
-#FunÁ„o de autocorrelaÁ„o e autocorrelaÁ„o parcial amostral
+#Fun√ß√£o de autocorrela√ß√£o e autocorrela√ß√£o parcial amostral
 par(mfrow=c(1,2))
 #tsdisplay(y)
 
@@ -65,10 +65,10 @@ pho.MQC<-a1/b1
 c(p.MQC,pho.MQC)
 
 
-#M·xima verossimilhanÁa condicional
+#M√°xima verossimilhan√ßa condicional
 #------------------------------------
 
-#FunÁ„o de probabiidade condicional
+#Fun√ß√£o de probabiidade condicional
 fdp <- function(yt,alpha=alpha,beta1=beta1,yt1,n){
   mini <- min(yt,yt1)
   maxi<-max(0,(yt+yt1-n))
@@ -77,7 +77,7 @@ fdp <- function(yt,alpha=alpha,beta1=beta1,yt1,n){
   sum(t)
 }
 
-#FunÁ„o de log-verossimilhanÁa
+#Fun√ß√£o de log-verossimilhan√ßa
 library(maxLik)
 
 aux <- numeric(0)
@@ -98,7 +98,7 @@ pho.MVC <-alpha.MVC-beta.MVC
 p.MVC <-beta.MVC/(1-pho.MVC)
 c(p.MVC,pho.MVC)
 
-#Par‚metros estimados
+#Par√¢metros estimados
 c(p,pho)
 YW <- round(c(p.YW,pho.YW),3)
 MQC <- round(c(p.MQC,pho.MQC),3)
