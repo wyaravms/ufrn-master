@@ -4,7 +4,7 @@ set.seed(7)
 setwd("C:\\Users\\WYARAVMS\\Google Drive")
 
 # Função da distribuição posterior para os parâmetros
-  posterior.burr<-function(dados,int,theta){
+  posterior.burr=function(dados,int,theta){
        n=length(dados)
        burnin=200
        thin=10
@@ -76,14 +76,14 @@ setwd("C:\\Users\\WYARAVMS\\Google Drive")
   }
 
 # Tamanho da Amostra
-n<-25
+n=25
 # Parâmetros
-p<-5
-b<-5
+p=5
+b=5
 #Número de Réplicas
-R<-3000
+R=3000
 #Número de iterações Boostrap
-B<-500
+B=500
 
 
 # Resultados para os estimadores Bayesianos
@@ -96,7 +96,7 @@ result2=matrix(rep(NA,2*R),ncol=2)
 result2b=matrix(rep(NA,2*B),ncol=2)
 thetaest2=matrix(rep(NA,2*R),ncol=2)
 
-norm.lik<-function(theta,x){
+norm.lik=function(theta,x){
   p<-theta[1]
   b<-theta[2]
   n<-length(x)
@@ -177,7 +177,7 @@ relbiascorr2=biascorr2/theta2*100
 EQMcorr2=biascorr2^2+Varcorr2
 
 
-print('Bayesian Estimatot')
+print('Bayesian Estimator')
 mresultscorr1=matrix(c(Mediacorr1,biascorr1,Varcorr1,EQMcorr1),2,4)
 dimnames(mresultscorr1)=list(NULL,c("Mediacorr1","biascorr1","Variancia1","EQMcorr1"))
 xtable(mresultscorr1,digits = 4)
