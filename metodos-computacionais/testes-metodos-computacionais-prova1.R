@@ -11,7 +11,7 @@ for(a in 2:10){
 }
 
 # ---------------------------------------------------------------#
-# Método da tranformada inversa para "Distribuicoes continuas"
+# MÃ©todo da tranformada inversa para "Distribuicoes continuas"
 # ---------------------------------------------------------------#
 
 # generate random values
@@ -333,7 +333,7 @@ lines(d1, col="blue")
 
 
 # ---------------------------------------------------------------#
-# Metodos de otimizaçao
+# Metodos de otimizaÃ§ao
 # ---------------------------------------------------------------#
 
 #Simulate Annealing
