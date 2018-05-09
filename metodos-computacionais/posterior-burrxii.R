@@ -2,7 +2,7 @@
 rm(list=ls(all=TRUE))
 set.seed(7)
 
-# FunÁ„o que gera valores da Burr XII com dois par‚metros
+# Fun√ß√£o que gera valores da Burr XII com dois par√¢metros
 rburrxii=function(n,p,b){
   u=runif(n)
   p=5
@@ -11,7 +11,7 @@ rburrxii=function(n,p,b){
   return(x)
 }
 
-# FunÁ„o da distribuiÁ„o posterior para os par‚metros
+# Fun√ß√£o da distribui√ß√£o posterior para os par√¢metros
 posterior.burr<-function(dados,int,theta){
   n=length(dados)
   burnin=200
@@ -86,4 +86,4 @@ posterior.burr<-function(dados,int,theta){
 p=4;b=5
 
 x=rburrxii(25,p,b)
-posterior.burr(x,100,theta=c(p,b))
+result=posterior.burr(x,1000,theta=c(p,b))
