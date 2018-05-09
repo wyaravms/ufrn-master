@@ -20,7 +20,7 @@ l=loglexp(x, n, theta)
 #par(mfrow=c(1,2))
 plot(theta, l, type="l", col=2)
 
-# function geral para gr·fico da log verossimilhanÁa
+# function geral para gr√°fico da log verossimilhan√ßa
 par(mfrow=c(2,3))
 for (i in 1:6){
   theta0=2
