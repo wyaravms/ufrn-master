@@ -3,7 +3,7 @@ rm(list=ls(all=TRUE))
 set.seed(7)
 setwd("C:\\Users\\WYARAVMS\\Google Drive")
 
-# FunÁ„o da distribuiÁ„o posterior para os par‚metros
+# Fun√ß√£o da distribui√ß√£o posterior para os par√¢metros
   posterior.burr<-function(dados,int,theta){
        n=length(dados)
        burnin=200
@@ -77,12 +77,12 @@ setwd("C:\\Users\\WYARAVMS\\Google Drive")
 
 # Tamanho da Amostra
 n<-25
-# Par‚metros
+# Par√¢metros
 p<-5
 b<-5
-#N˙mero de RÈplicas
+#N√∫mero de R√©plicas
 R<-3000
-#N˙mero de iteraÁıes Boostrap
+#N√∫mero de itera√ß√µes Boostrap
 B<-500
 
 
@@ -91,7 +91,7 @@ result1=matrix(rep(NA,2*R),ncol=2)
 result1b=matrix(rep(NA,2*B),ncol=2)
 thetaest1=matrix(rep(NA,2*R),ncol=2)
 
-# Resultados para os estimadores de Maxima VerossimilhanÁa
+# Resultados para os estimadores de Maxima Verossimilhan√ßa
 result2=matrix(rep(NA,2*R),ncol=2)
 result2b=matrix(rep(NA,2*B),ncol=2)
 thetaest2=matrix(rep(NA,2*R),ncol=2)
@@ -121,7 +121,7 @@ i=1
     thetaPost=c(mean(post[,1]), mean(post[,2]))
     result1[i,]=thetaPost
 
-# InÌcio do Boostrap para cada RÈplica de Monte Carlo
+# In√≠cio do Boostrap para cada R√©plica de Monte Carlo
 j=1
    while(j<=B){
       ub=runif(n)
@@ -159,9 +159,9 @@ j=1
 
 library(xtable)
 
-sink('resultados para os estimadores corrigidos e rÈplicas - n=25-p=1-1.txt')
+sink('resultados para os estimadores corrigidos e r√©plicas - n=25-p=1-1.txt')
 
-# Resultados do ViÈs Corrigido por Boostrap
+# Resultados do Vi√©s Corrigido por Boostrap
 Mediacorr1=c(mean(thetaest1[,1]),mean(thetaest1[,2]))
 Varcorr1=c(var(thetaest1[,1]),var(thetaest1[,2]))
 theta1=c(p,b)
@@ -188,7 +188,7 @@ dimnames(mresultscorr2)=list(NULL,c("Mediacorr2","biascorr2","Varcorr2","EQMcorr
 xtable(mresultscorr2,digits = 4)
 
 
-# Resultados das RÈplicas de Monte Carlo sem correÁ„o
+# Resultados das R√©plicas de Monte Carlo sem corre√ß√£o
 Media1=c(mean(result1[,1]),mean(result1[,2]))
 Var1=c(var(result1[,1]),var(result1[,2]))
 theta1=c(p,b)
