@@ -1,4 +1,4 @@
-# ufrn-master-codes
+# ufrn-master
 some codes from classes
 
 material in portuguese
