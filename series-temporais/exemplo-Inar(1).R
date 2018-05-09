@@ -5,7 +5,7 @@ y.aux <- numeric(0)
 n <- 150
 
 
-#Geração de uma sequencia que segue o processo INAR(1)
+#GeraÃ§Ã£o de uma sequencia que segue o processo INAR(1)
 yn <- function(n){
   y.aux[1] <- rpois(1,mu)
   for(i in 2:n)
@@ -13,31 +13,31 @@ yn <- function(n){
   y.aux
 }
 
-y <- yn(n) #Série gerada
+y <- yn(n) #SÃ©rie gerada
 
 plot.ts(y,lwd=1,ylab="",xlab="")
-points(y, pch=19, cex=0.5, lwd=1) #Destaca cada ponto da série
+points(y, pch=19, cex=0.5, lwd=1) #Destaca cada ponto da sÃ©rie
 
 
 mean(y)
-var(y) #Esperamos que estes dois valores sejam próximos
+var(y) #Esperamos que estes dois valores sejam prÃ³ximos
 
 
-#Função de autocorrelação e autocorrelação parcial teorica
+#FunÃ§Ã£o de autocorrelaÃ§Ã£o e autocorrelaÃ§Ã£o parcial teorica
 m <- 20 #defasagem maxima
 par(mfrow=c(1,2))
-plot(p^(1:m),type="h", main = "Função de autocorrelação teorica",ylab = "",xlab="Defasagem")
-plot(c(p,rep(0,m-1)),type="h", main = "Função de autocorrelação parcial teorica",ylab = "",xlab="Defasagem")
+plot(p^(1:m),type="h", main = "FunÃ§Ã£o de autocorrelaÃ§Ã£o teorica",ylab = "",xlab="Defasagem")
+plot(c(p,rep(0,m-1)),type="h", main = "FunÃ§Ã£o de autocorrelaÃ§Ã£o parcial teorica",ylab = "",xlab="Defasagem")
 
 
-#Função de autocorrelação e autocorrelação parcial amostral
+#FunÃ§Ã£o de autocorrelaÃ§Ã£o e autocorrelaÃ§Ã£o parcial amostral
 par(mfrow=c(1,1))
 tsdisplay(y)
 
 acf(y,lag.max = m)
 pacf(y, lag.max = m)
 
-#Estimação dos parâmetros
+#EstimaÃ§Ã£o dos parÃ¢metros
 #--------------------------
 
 #Yule-Walker
@@ -53,10 +53,10 @@ p.MQC <- (sum(y[2:n]*y[1:(n-1)])-sum(y[2:n])*sum(y[1:(n-1)])/(n-1))/(sum(y[1:(n-
 lamb.MQC <- (sum(y[2:n])-p.MQC*sum(y[1:(n-1)]))/(n-1)
 c(p.MQC,lamb.MQC)
 
-#Máxima verossimilhança condicional
+#MÃ¡xima verossimilhanÃ§a condicional
 #------------------------------------
 
-#Função de probabiidade condicional
+#FunÃ§Ã£o de probabiidade condicional
 fdp <- function(yt,alpha=alph,lamb=lambd,yt1){
   mini <- min(yt,yt1)
   w <- 0:mini
@@ -64,7 +64,7 @@ fdp <- function(yt,alpha=alph,lamb=lambd,yt1){
   exp(-lamb)*sum(t)
 }
 
-#Função de log-verossimilhança
+#FunÃ§Ã£o de log-verossimilhanÃ§a
 library(maxLik)
 
 aux <- numeric(0)
@@ -81,7 +81,7 @@ p.MVC <- out$estimate[1]
 lamb.MVC <- out$estimate[2]
 c(p.MVC,lamb.MVC)
 
-#Parâmetros estimados
+#ParÃ¢metros estimados
 c(p,lambda)
 YW <- round(c(p.YW,lamb.YW),3)
 MQC <- round(c(p.MQC,lamb.MQC),3)
@@ -89,7 +89,7 @@ MVC <- round(c(p.MVC,lamb.MVC),3)
 rbind(c(p,lambda),YW,MQC,MVC)
 
 #-------------------------------------------
-#----------------APLICAÇÂO------------------
+#----------------APLICAÃ‡Ã‚O------------------
 #-------------------------------------------
 
 
@@ -159,7 +159,7 @@ DISLOCATION <- c(min(dislocation),max(dislocation),median(dislocation),mean(disl
 WEIB <- c(min(Weib2007),max(Weib2007),median(Weib2007),mean(Weib2007),(n5-1)*var(Weib2007)/n5)
 
 medidas <- rbind(POLIO,STRIKE,SOFT,DISLOCATION,WEIB)
-colnames(medidas) <- c("min","max","mediana","média","var")
+colnames(medidas) <- c("min","max","mediana","mÃ©dia","var")
 print(medidas,digits=3, include.rownames=T)
 
 library(forecast)
@@ -191,7 +191,7 @@ for(i in 2:n4){
   residuos.dis[(i-1)] <- y2[i]-p.MVC.d*y2[(i-1)]-lamb.MVC.d 
 }
 
-acf(residuos.dis) #Autocorrelação dos residuos 
+acf(residuos.dis) #AutocorrelaÃ§Ã£o dos residuos 
 
 mean(residuos.dis)
 var(residuos.dis) #lamb.MVC.d*(1+p.MVC.d)
