@@ -20,15 +20,15 @@ posterior.burr<-function(dados,int,theta){
     somalogdados=sum(log(dados))
     somalogdados1=sum(log(1+(dados^b)))
     logpost=n*log(p*b)+(b-1)*(somalogdados)-(p+1)*(somalogdados1)
-    logpost=logpost+(0.01-1)*log(p)-(p*0.01)+(0.01-1)*log(b)-(b*0.01)
+    logpost=logpost+(0.1-1)*log(p)-(p*0.1)+(0.1-1)*log(b)-(b*0.1)
     logpost
   }
   pmc=array(0,c(burnin+int,1))
   bmc=array(0,c(burnin+int,1))
   pmc[1]= theta[1]
   bmc[1]= theta[2]
-  Vp=0.001
-  Vb=0.001
+  Vp=0.3
+  Vb=0.4
   for (i in 2:burnin){
     pest=rgamma(1,pmc[i-1]^2/Vp,pmc[i-1]/Vp)
     best=rgamma(1,bmc[i-1]^2/Vb,bmc[i-1]/Vb)
